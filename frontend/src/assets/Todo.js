@@ -6,13 +6,16 @@ const Todo = () => {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState([]);
 
+  // Base URL from environment variable
+  const BASE_URL = process.env.REACT_APP_API + "/todos";
+
   // Fetch todos from the backend when the component mounts
   useEffect(() => {
     axios
-      .get("http://localhost:3001/todos")
+      .get(BASE_URL)
       .then((res) => setTodos(res.data))
       .catch((err) => console.error("Error fetching todos:", err));
-  }, []);
+  }, [BASE_URL]);
 
   // Handle form submission to add a new todo
   const handleSubmit = async (e) => {
@@ -20,9 +23,7 @@ const Todo = () => {
     if (task.trim() === "") return;
 
     try {
-      // Send a POST request with { text: task }
-      const response = await axios.post("http://localhost:3001/todos", { text: task });
-      // Append the new todo from the server (which includes the MongoDB _id) to the list
+      const response = await axios.post(BASE_URL, { text: task });
       setTodos([...todos, response.data]);
       setTask("");
     } catch (error) {
@@ -32,15 +33,13 @@ const Todo = () => {
 
   // Toggle the completed state of a todo
   const toggleComplete = async (id) => {
-    // Find the current todo in state
     const todo = todos.find((t) => t._id === id);
     if (!todo) return;
 
     try {
-      const response = await axios.patch(`http://localhost:3001/todos/${id}`, {
+      const response = await axios.patch(`${BASE_URL}/${id}`, {
         completed: !todo.completed,
       });
-      // Update the local state with the updated todo returned by the server
       setTodos(todos.map((t) => (t._id === id ? response.data : t)));
     } catch (error) {
       console.error("Error updating todo:", error);
@@ -50,7 +49,7 @@ const Todo = () => {
   // Delete a todo from the list and the database
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/todos/${id}`);
+      await axios.delete(`${BASE_URL}/${id}`);
       setTodos(todos.filter((t) => t._id !== id));
     } catch (error) {
       console.error("Error deleting todo:", error);
@@ -79,7 +78,10 @@ const Todo = () => {
             className={`todo-item ${todo.completed ? "completed" : ""}`}
           >
             <span onClick={() => toggleComplete(todo._id)}>{todo.text}</span>
-            <button className="delete-button" onClick={() => deleteTodo(todo._id)}>
+            <button
+              className="delete-button"
+              onClick={() => deleteTodo(todo._id)}
+            >
               &times;
             </button>
           </li>
@@ -90,4 +92,3 @@ const Todo = () => {
 };
 
 export default Todo;
-
