@@ -12,8 +12,8 @@ A simple and efficient **Todo application** built with **Node.js**, **Express**,
 </p> 
 ## Live Demo
 
-Check out the live app on Netlify:  
-[Click here](https://tasko-portal.netlify.app)
+👉Check out the live app on Netlify:  
+[tasko-portal.netlify.app](https://tasko-portal.netlify.app)
 
 
 ## Features
