@@ -13,7 +13,7 @@ A simple and efficient **Todo application** built with **Node.js**, **Express**,
 ## Live Demo
 
 Check out the live app on Netlify:  
-[click here](tasko-portal.netlify.app)
+[Click here to view the Todo App](https://your-netlify-link.netlify.app)
 
 ## Features
 
