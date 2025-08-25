@@ -2,10 +2,18 @@
 
 A simple and efficient **Todo application** built with **Node.js**, **Express**, and **MongoDB** to manage your daily tasks. Perform CRUD operations and store your tasks persistently in MongoDB.
 
+<p align="center">
+  <a href="tasko-portal.netlify.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live-Demo-green?style=for-the-badge&logo=netlify" alt="Live Demo" />
+  </a>
+  <a href="https://github.com/deyjibo/Todo-App-with-Mongo-DB">
+    <img src="https://img.shields.io/badge/GitHub-Repo-black?style=for-the-badge&logo=github" alt="GitHub Repo" />
+  </a>
+</p> 
 ## Live Demo
 
 Check out the live app on Netlify:  
-[Click here to view the Todo App](https://your-netlify-link.netlify.app)
+[click here](tasko-portal.netlify.app)
 
 ## Features
 
@@ -25,8 +33,17 @@ Check out the live app on Netlify:
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB (NoSQL)  
 
-## Installation & Running Locally
 
-1. **Clone the repository:**  
+## 🚀 Getting Started  
+
+Run it Locally 
 ```bash
-git clone https://github.com/deyjibo/Todo-App-with-Mongo-DB.git
+###  Run the Backend First
+cd backend
+npm install
+npm run
+###  Run the Frontend Next
+cd frontend
+npm install
+npm run dev
+
