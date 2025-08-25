@@ -42,9 +42,9 @@ Run it Locally
 ###  Run the Backend First
 cd backend
 npm install
-npm run
+npm start
 ###  Run the Frontend Next
 cd frontend
 npm install
-npm run dev
+npm start
 
